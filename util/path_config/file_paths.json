@@ -29,7 +29,7 @@
             "actual_path": "/hardware_pos_system/sales/services/show_today_info.php"
         },
         {
-            "path_name": "sales_for_table",
+            "path_name": "table_for_sales",
             "actual_path": "/hardware_pos_system/sales/services/for_table.php"
         },
         {
@@ -43,6 +43,10 @@
         {
             "path_name": "add_expenses",
             "actual_path": "/hardware_pos_system/expenses/services/add_expenses.php"
+        },
+        {
+            "path_name": "table_for_expenses",
+            "actual_path": "/hardware_pos_system/expenses/services/for_table.php"
         },
         {
             "path_name": "optionGenerate",

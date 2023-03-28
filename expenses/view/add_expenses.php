@@ -31,7 +31,7 @@ require_once LinkGenerator::getFilePath("optionGenerate");
     <input type="text" id="amount">
     <button id="add_expenses_btn">Add Expense </button>
     <!-- <script src="Export.js" type="module"></script> -->
-    <script src="script.js" type="module"></script>
+    <script src="add_expenses.js" type="module"></script>
 </body>
 
 </html>

@@ -26,7 +26,7 @@ const loadTable = async () => {
 
 
    
-    let url = await geturl("sales_for_table");
+    let url = await geturl("table_for_sales");
     await fetch(url, { method: "POST",body:form })
         .then((response) => response.text())
         .then((json) => {

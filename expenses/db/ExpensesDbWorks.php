@@ -59,7 +59,7 @@ class ExpensesDbWorks extends Db
     {
         $ownObject = self::loadOwnObject();
         $query = "SELECT * FROM `expense_details` WHERE `description`=? AND `expense_category_id`=?";
-        $statement = Db::queryExecution($ownObject,$query,array($description,$category));
+        $statement = Db::queryExecution($ownObject, $query, array($description, $category));
         $resultset = $statement->fetchAll();
         $rowCount = count($resultset);
         $expenseDetailsId = null;
@@ -81,5 +81,35 @@ class ExpensesDbWorks extends Db
         }
         return $status;
     }
-}
 
+    public static function loadExpenses($description, $expense_category_id,$date)
+    {
+
+    
+        $ownObject = self::loadOwnObject();
+        $wildCard = "%";
+
+        if(empty($date)){
+            $date = Util::getDate("today");
+        }
+        if(empty($expense_category_id)){
+        
+            $expense_category_id = "1";
+        }
+        $date_from = $date." 00:00:00";
+        $date_to = $date." 23:59:59"; 
+
+        $query = "SELECT * FROM `expenses`
+        INNER JOIN `expense_details` ON 
+        `expense_details`.`expense_details_id`= `expenses`.`expense_details_id`
+        INNER JOIN `expense_category` ON
+        `expense_details`.`expense_category_id` = `expense_category`.`expense_category_id` 
+        WHERE `expense_details`.`description` LIKE  '%' ? '%' AND `expense_category`.`expense_category_id` = ?
+        AND (`expenses`.`created_at` BETWEEN ? AND ? )";
+
+        $statement = Db::queryExecution($ownObject, $query, array($description, $expense_category_id,$date_from,$date_to));
+        $resultset = $statement->fetchAll();
+        
+        return $resultset;
+    }
+}
