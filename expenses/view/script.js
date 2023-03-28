@@ -21,11 +21,8 @@ const loadDescripions = async () => {
         .then((data) => {
             description = data;
         })
-    console.log(description)
+
     return description;
-
-
-
 }
 
 
@@ -33,8 +30,8 @@ const data = await loadDescripions();
 const description = document.querySelector("#description");
 const resultsHTML = document.querySelector("#results");
 const category = document.querySelector("#category");
-const amount = document.querySelector("#amount");
-const add_expenses_btn = document.querySelector("#add_expenses_btn");
+
+const amount = 0;;
 
 category.addEventListener('change', () => {
 
@@ -51,7 +48,6 @@ description.addEventListener('input', () => {
             resultsHTML.innerHTML += "<ul>" + results[i] + "</ul>";
         }
     }
-
 
 })
 
@@ -75,7 +71,7 @@ resultsHTML.addEventListener('click', (event) => {
     const setValue = event.target.innerText;
     description.value = setValue;
     changeCategoryValue(setValue);
-    this.innerHTML = "";
+    resultsHTML.innerHTML = "";
 }
 )
 
@@ -91,13 +87,11 @@ const changeCategoryValue = async (description) => {
                 document.querySelector("#category").value = data;
             }
         })
-
-
 }
 let addExpenses = async () => {
     let url = await geturl("add_expenses");
     const form = new FormData();
-    form.append("amount", amount.value);
+
     form.append("description", description.value);
     form.append("category", category.value);
     await fetch(url, { method: "POST", body: form })
@@ -105,8 +99,4 @@ let addExpenses = async () => {
         .then((data) => {
             console.log(data);
         })
-
 }
-add_expenses_btn.addEventListener('click', () => {
-    addExpenses();
-});

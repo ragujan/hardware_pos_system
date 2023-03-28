@@ -38,7 +38,7 @@
         },
         {
             "path_name": "expenses_load_description",
-            "actual_path": "/hardware_pos_system/expenses/services/LoadDescription.php"
+            "actual_path": "/hardware_pos_system/expenses/services/load_description.php"
         },
         {
             "path_name": "add_expenses",

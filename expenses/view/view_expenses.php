@@ -27,8 +27,7 @@ require_once LinkGenerator::getFilePath("optionGenerate");
         OptionGenerate::generate($resultset, "expense_category_name", "expense_category_id");
         ?>
     </select>
-    <span>Amount</span>
-    <input type="text" id="amount">
+
     <button id="search">Add Expense </button>
     <!-- <script src="Export.js" type="module"></script> -->
     <script src="script.js" type="module"></script>
